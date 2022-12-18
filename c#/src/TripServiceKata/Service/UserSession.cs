@@ -3,15 +3,14 @@ using TripServiceKata.Exception;
 
 namespace TripServiceKata.Service
 {
-    public class UserSession
-    {
-        private static readonly UserSession userSession = new UserSession();
+    public class UserSession : IUserSession {
+        private static IUserSession userSession;
 
-        private UserSession()
-        {
+        public UserSession(IUserSession userSession) {
+            UserSession.userSession = userSession;
         }
 
-        public static UserSession GetInstance()
+        public static IUserSession GetInstance()
         {
             return userSession;
         }
